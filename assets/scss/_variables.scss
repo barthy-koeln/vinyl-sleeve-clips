@@ -1,0 +1,46 @@
+@import "utils";
+
+// COLORS
+$cyan: #ccfbfe;
+$gray: #cdd6dd;
+$navy: #464d77;
+$green: #36827f;
+$pink: #cd8987;
+
+$black: #000;
+
+$theme-colors: (
+  "primary": $pink,
+  "secondary": $green,
+  "light": $cyan,
+  "dark": $navy,
+);
+
+// FONTS
+$headings-font-family: "Inter", sans-serif;
+$font-family-base: "Inter", sans-serif;
+$font-family-alt: "Inter", sans-serif;
+
+// ANIMATIONS
+$duration: .35s;
+$easing: cubic-bezier(.25, .87, .58, 1);
+
+$enable-shadows: true;
+$box-shadow-sm: 0 0 .25rem rgba($black, .075);
+$box-shadow: 0 0 .5rem rgba($black, .15);
+$box-shadow-lg: 0 0 1rem rgba($black, .3);
+
+$spacer: 1rem;
+
+$font-weight-lighter: 100;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 600;
+$font-weight-bolder: 700;
+
+$h1-font-size: 4rem;
+$h2-font-size: 3rem;
+$h3-font-size: 2rem;
+$h4-font-size: 1.875rem;
+
+$border-radius: .313rem;

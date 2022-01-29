@@ -1,0 +1,16 @@
+@import "assets/scss/base";
+
+.a-mainCanvas {
+
+  &__wrapper {
+    position: sticky;
+    top: 0;
+  }
+
+  &__canvas {
+    height: 100% !important;
+    object-fit: cover;
+    object-position: top;
+    width: 100% !important;
+  }
+}

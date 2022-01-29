@@ -1,0 +1,7 @@
+translation:
+  symfony_profiler:
+    enabled: true
+  webui:
+    enabled: true
+    allow_create: true
+    allow_delete: true

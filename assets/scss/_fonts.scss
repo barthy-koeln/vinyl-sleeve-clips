@@ -1,0 +1,10 @@
+@import "~@fontsource/inter/scss/mixins";
+
+$unicodeMap: ();
+
+@include fontFace(
+  $weight: 400,
+  $display: swap,
+  $fontDir: "~@fontsource/inter/files",
+  $fontName: "Inter"
+);

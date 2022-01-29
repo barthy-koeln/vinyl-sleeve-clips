@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2046
+
+DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
+source "$DIR/../node_modules/.bin/echolorized"
+
+NODE="$DIR/../node_modules/.bin/"
+PHP="$DIR/../vendor/bin"
+
+FRONTEND_DIRECTORIES="assets assets/components"
+BACKEND_DIRECTORIES="src"
+
+colored_output "$GREEN" "\n[EXECUTING PRE COMMIT HOOK]"
+e_info "USE ${YELLOW}git commit -n -m 'your message'${RESET} to bypass these checks."
+echo -e ''
+
+###---###
+e_info "Removing VarDump uses"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  find $BACKEND_DIRECTORIES -type f -name '*.php' -exec sed -i '' '/VarDumper/d' {} \;
+else
+  find $BACKEND_DIRECTORIES -type f -name '*.php' -exec sed -i '/VarDumper/d' {} \;
+fi
+
+e_info "Fixing PHP Code Style"
+"$PHP/php-cs-fixer" --quiet fix $BACKEND_DIRECTORIES --config=.php-cs-fixer.php
+
+e_info "Linting/Fixing JavaScript Code Style"
+
+# shellcheck disable=SC2086
+if ! "$NODE/eslint" --fix --quiet $(find $FRONTEND_DIRECTORIES -type f -name '*.js'); then
+  e_error "Error in JavaScript file. Run ${YELLOW}eslint${RESET} to check."
+  exit 1
+fi
+
+###---###
+e_info "Linting/Fixing SCSS Code Style"
+
+# shellcheck disable=SC2086
+if ! "$NODE/stylelint" --fix --quiet --syntax scss $(find $FRONTEND_DIRECTORIES -type f -name '*.scss'); then
+  e_error "Error in SCSS file. Run ${YELLOW}stylelint${RESET} to check."
+  exit 1
+fi
+
+###---###
+e_info "Linting Twig Files"
+
+# shellcheck disable=SC2086
+if ! "$DIR/console" --quiet lint:twig $(find $FRONTEND_DIRECTORIES -type f -name '*.twig'); then
+  e_error "Error in Twig file. Run ${YELLOW}bin/console lint:twig${RESET} to check."
+  exit 1
+fi
+
+###---###
+e_info "Linting YAML Config"
+
+# shellcheck disable=SC2086
+if ! "$DIR/console" --quiet lint:yaml $(find "$DIR/../config" -type f -name '*.yaml'); then
+  e_error "Error in YAML file. Run ${YELLOW}bin/console lint:yaml${RESET} to check."
+  exit 1
+fi
+
+###---###
+e_info "Linting Images"
+
+# shellcheck disable=SC2086
+if ! "$NODE/image-lint" -b 1 "$DIR/../assets"; then
+  e_error "Some files can be optimized. Run ${YELLOW}image-lint -b 1${RESET} to check."
+  exit 1
+fi
+
+###---###
+e_success "All good, staging additional changes.\n"
+git update-index --again

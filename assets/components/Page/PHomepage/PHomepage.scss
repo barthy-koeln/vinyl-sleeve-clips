@@ -1,0 +1,14 @@
+@import "../../../scss/base";
+
+.p-homepage {
+  position: relative;
+
+  &__canvas {
+    background-color: map-get($theme-colors, "secondary");
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

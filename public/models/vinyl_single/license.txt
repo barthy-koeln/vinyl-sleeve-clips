@@ -1,0 +1,11 @@
+Model Information:
+* title:	Vinyl single
+* source:	https://sketchfab.com/3d-models/vinyl-single-68b7bb4ad9e245f1b7a1de49ede7d233
+* author:	odessey (https://sketchfab.com/odessey)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Vinyl single" (https://sketchfab.com/3d-models/vinyl-single-68b7bb4ad9e245f1b7a1de49ede7d233) by odessey (https://sketchfab.com/odessey) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

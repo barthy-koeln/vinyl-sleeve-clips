@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+SOURCE=$1
+TARGET=${2:-origin/main}
+
+git fetch --all
+git checkout "deploy/$SOURCE"
+git reset --hard "$TARGET"
+git push --force

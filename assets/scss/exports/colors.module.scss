@@ -1,0 +1,8 @@
+@import '../base';
+
+:export {
+
+  @each $key, $value in $theme_colors {
+    #{unquote($key)}: $value;
+  }
+}

@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="symfony-builtin" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$/public" port="8000">
+    <CommandLine>
+      <envs>
+        <env name="VUCX_GITLAB_TOKEN" value="none" />
+      </envs>
+    </CommandLine>
+    <method v="2" />
+  </configuration>
+</component>

@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
+source "$DIR/../node_modules/.bin/echolorized"
+
+NAME=$1
+TYPE=${NAME::1}
+ALT_NAME_START=$(echo "${NAME:1:1}" | tr '[:upper:]' '[:lower:]')
+ALT_TYPE=$(echo "$TYPE" | tr '[:upper:]' '[:lower:]')
+ALT_NAME_END=${NAME:2}
+ALT_NAME="$ALT_TYPE-$ALT_NAME_START$ALT_NAME_END"
+
+BASE_DIR="$DIR/../assets/components"
+
+case $TYPE in
+ Q)
+  COMPONENT_DIR=Quark
+  NAV_DIR=01-quarks
+  ;;
+ A)
+  COMPONENT_DIR=Atom
+  NAV_DIR=02-atoms
+  ;;
+ M)
+  COMPONENT_DIR=Molecule
+  NAV_DIR=03-molecules
+  ;;
+ O)
+  COMPONENT_DIR=Organism
+  NAV_DIR=04-organisms
+  ;;
+ P)
+  COMPONENT_DIR=Page
+  NAV_DIR=05-pages
+  ;;
+*)
+  e_error "The component name must start with ${YELLOW}\"A\"${RESET}, ${YELLOW}\"M\"${RESET}, ${YELLOW}\"O\"${RESET}, or ${YELLOW}\"P\"${RESET}".
+  exit 1
+  ;;
+esac
+
+TARGET_DIR="$BASE_DIR/$COMPONENT_DIR/$NAME"
+
+cp -r "$BASE_DIR/_copy/TComponentTemplate/" "$TARGET_DIR"
+
+for FILE in "$TARGET_DIR/"*.*; do
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    sed -i '' -- "s/TComponentTemplate/$NAME/g" "$FILE"
+    sed -i '' -- "s/t-componentTemplate/$ALT_NAME/g" "$FILE"
+    sed -i '' -- "s/__-template/$NAV_DIR/g" "$FILE"
+    sed -i '' -- "s/_copy/$COMPONENT_DIR/g" "$FILE"
+  else
+    sed -i -- "s/TComponentTemplate/$NAME/g" "$FILE"
+    sed -i -- "s/t-componentTemplate/$ALT_NAME/g" "$FILE"
+    sed -i -- "s/__-template/$NAV_DIR/g" "$FILE"
+    sed -i -- "s/_copy/$COMPONENT_DIR/g" "$FILE"
+  fi
+
+  mv "$FILE" "${FILE/TComponentTemplate/$NAME}"
+done

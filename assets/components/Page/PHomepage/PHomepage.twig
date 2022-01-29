@@ -1,0 +1,13 @@
+{% extends 'Template/base.twig' %}
+
+{% set entryName = 'PHomepage' %}
+
+{% block page %}
+  <div class="p-homepage">
+    {% include 'Atom/AMainCanvas/AMainCanvas.twig' with {class: 'p-homepage__canvas'} only %}
+    
+    <header>
+      <h1>Welcome!</h1>
+    </header>
+  </div>
+{% endblock page %}

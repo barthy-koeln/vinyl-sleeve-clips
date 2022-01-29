@@ -1,0 +1,43 @@
+{% set buildType = is_modern_browser() ? 'modern' : 'legacy' %}
+
+<!doctype html>
+<html lang="{{ app.request.locale }}">
+<head>
+  <meta charset="utf-8">
+
+  <title>{{ pageTitle|default('Welcome!') }} &middot; Twig/JS Template</title>
+
+  <meta
+    name="description"
+    content="{{ pageDescription|default('A Twig and JS template.') }}"
+  >
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  {% block head_assets %}
+    {{ encore_entry_link_tags('header', entrypointName = buildType, attributes = {defer: false}) }}
+    {{ encore_entry_script_tags('header', entrypointName = buildType, attributes = {defer: false}) }}
+
+    {% if entryName is defined %}
+      {{ encore_entry_link_tags(entryName, entrypointName = buildType) }}
+    {% endif %}
+  {% endblock %}
+</head>
+
+<body class="{{ body_class|default('') }}">
+
+{% block page %}{% endblock %}
+
+{% block body_assets %}
+  {{ encore_entry_link_tags('app', entrypointName = buildType) }}
+  {{ encore_entry_script_tags('app', entrypointName = buildType) }}
+
+  {% if entryName is defined %}
+    {{ encore_entry_script_tags(entryName, entrypointName = buildType) }}
+  {% endif %}
+{% endblock %}
+</body>
+</html>

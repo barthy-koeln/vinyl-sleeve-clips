@@ -1,0 +1,10 @@
+twig:
+    default_path: '%kernel.project_dir%/assets/components'
+    paths:
+        '%kernel.project_dir%/public/icons': 'icons'
+        '%kernel.project_dir%/public/images': 'images'
+    strict_variables: false
+
+when@test:
+    twig:
+        strict_variables: true

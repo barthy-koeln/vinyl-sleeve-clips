@@ -1,0 +1,9 @@
+webpack_encore:
+  output_path: false
+
+  script_attributes:
+    defer: true
+
+  builds:
+    modern: '%kernel.project_dir%/public/build/modern/'
+    legacy: '%kernel.project_dir%/public/build/legacy/'

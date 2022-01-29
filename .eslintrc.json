@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "standard",
+    "plugin:storybook/recommended"
+  ],
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "padded-blocks": [
+      "error",
+      {
+        "blocks": "never",
+        "classes": "always"
+      }
+    ]
+  },
+  "globals": {
+    "PUBLIC_PATH": true
+  },
+  "overrides": [
+  ]
+}
