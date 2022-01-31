@@ -1,0 +1,47 @@
+@import "assets/scss/base";
+
+.a-scrollHint {
+  align-items: center;
+  animation: bounce 2.5s infinite;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+
+  @keyframes bounce {
+    0%, 50%, 100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes wonky {
+    0%, 50%, 100% {
+      transform: rotate(0);
+    }
+    12.5% {
+      transform: rotate(-5deg);
+    }
+    37.5% {
+      transform: rotate(5deg);
+    }
+  }
+
+  &__text {
+    animation: wonky 2.5s infinite;
+  }
+
+  .fa-mouse-alt {
+    width: 32px;
+
+    .fa-primary {
+      color: $background;
+    }
+
+    .fa-secondary {
+      color: $foreground;
+    }
+  }
+}

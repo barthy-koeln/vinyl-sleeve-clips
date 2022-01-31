@@ -36,7 +36,7 @@ export class AMainCanvas extends ThreeJSCanvas {
     this.vinyl = root.getObjectByName('Vinyl')
     this.clips = root.getObjectByName('Clips')
 
-    const planeGeometry = new PlaneGeometry(100, 100, 32, 32)
+    const planeGeometry = new PlaneGeometry(200, 200, 32, 32)
     const planeMaterial = new ShadowMaterial()
     const plane = new Mesh(planeGeometry, planeMaterial)
     plane.position.y = 0.1

@@ -1,0 +1,16 @@
+@import "assets/scss/base";
+
+.m-header {
+  text-align: center;
+
+  h1 {
+    color: $background;
+    font-family: $headings-font-family;
+    font-size: 8rem;
+    font-weight: bolder;
+    line-height: 5rem;
+    margin: 0;
+    -webkit-text-stroke: 2px map-get($theme-colors, "primary");
+    text-transform: uppercase;
+  }
+}

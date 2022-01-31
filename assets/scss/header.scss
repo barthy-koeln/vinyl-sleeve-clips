@@ -3,13 +3,23 @@
  * Include anything necessary to prevent layout shifts here (above the fold).
  */
 
-@import 'base';
-@import 'fonts';
-@import '~bootstrap/scss/bootstrap-reboot';
-@import '~bootstrap/scss/bootstrap-grid';
+@import "base";
+@import "fonts";
+@import "~bootstrap/scss/bootstrap-reboot";
+@import "~bootstrap/scss/bootstrap-grid";
 
 html,
 body {
+  background-color: $background;
+  color: map-get($theme-colors, "dark");
   min-height: 100%;
   scroll-behavior: smooth;
+}
+
+
+[data-appear] {
+  transition-duration: $duration;
+  transition-property: opacity, transform;
+  transition-timing-function: $easing;
+  visibility: hidden;
 }

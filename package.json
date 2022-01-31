@@ -57,6 +57,7 @@
     "build": "yarn build_modern && yarn build_legacy"
   },
   "dependencies": {
+    "@fontsource/blackout-midnight": "^4.5.1",
     "@fontsource/inter": "^4.5.2",
     "@popperjs/core": "^2.9.2",
     "@vucx/vanilla-component": "^1.1.4",

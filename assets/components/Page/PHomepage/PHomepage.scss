@@ -4,11 +4,60 @@
   position: relative;
 
   &__canvas {
-    background-color: map-get($theme-colors, "secondary");
     height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
+    position: relative;
     width: 100%;
+    z-index: 0;
+  }
+
+  &__header {
+    position: fixed;
+    top: 15vh;
+    width: 100%;
+  }
+
+  &__scrollHint {
+    bottom: 1rem;
+    position: fixed;
+    width: 100%;
+  }
+
+  &__section1,
+  &__section2,
+  &__section3,
+  &__section4 {
+    position: fixed;
+    width: 512px;
+  }
+
+  &__section1 {
+    bottom: 55vh;
+    left: 5rem;
+  }
+
+  &__section2 {
+    left: 5rem;
+    top: 45vh;
+  }
+
+  &__section3 {
+    bottom: 35vh;
+    right: 5rem;
+  }
+
+  &__section4 {
+    right: 5rem;
+    top: 65vh;
+  }
+
+  em {
+    color: map-get($theme-colors, "primary");
+    font-style: normal;
+  }
+
+  section {
+    background-color: map-get($theme-colors, "dark");
+    color: map-get($theme-colors, "light");
+    padding: 4rem;
   }
 }

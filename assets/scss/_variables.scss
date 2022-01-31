@@ -1,23 +1,19 @@
 @import "utils";
 
-// COLORS
-$cyan: #ccfbfe;
-$gray: #cdd6dd;
-$navy: #464d77;
-$green: #36827f;
-$pink: #cd8987;
-
 $black: #000;
 
 $theme-colors: (
-  "primary": $pink,
-  "secondary": $green,
-  "light": $cyan,
-  "dark": $navy,
+  "primary": #54c152,
+  "secondary": #464d77,
+  "light": #ccfbfe,
+  "dark": #1f2721,
 );
 
+$background: map-get($theme-colors, "light");
+$foreground: map-get($theme-colors, "dark");
+
 // FONTS
-$headings-font-family: "Inter", sans-serif;
+$headings-font-family: "Blackout Midnight", sans-serif;
 $font-family-base: "Inter", sans-serif;
 $font-family-alt: "Inter", sans-serif;
 

@@ -2114,6 +2114,11 @@
   dependencies:
     "@figspec/components" "^1.0.0"
 
+"@fontsource/blackout-midnight@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/blackout-midnight/-/blackout-midnight-4.5.1.tgz#be5fcc856eb6fd9d2c4ccb8b25aa818499cd3198"
+  integrity sha512-C5iRvrhoEDlL+BCqtnHC0wQP616AXW638CtZ6/aZyda4aIRWCOxexUvDYeEEPyZzRQXdpf+onEordE/LPLvB3g==
+
 "@fontsource/inter@^4.5.2":
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.5.2.tgz#f21a1b39e9fc40fd7f315f37687ad6f6f040528a"

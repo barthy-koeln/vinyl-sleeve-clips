@@ -18,12 +18,72 @@ export class ThreeJSCanvas extends MFComponent {
 
     this.camera = null
     this.scene = new Scene()
+    this.debugPrepared = false
 
     this.setupRenderer()
     this.setupLights()
     this.setupLoader()
 
     window.addEventListener('resize', this.onWindowResize)
+
+    window.debug = {
+      wireframe: this.debugWireframe,
+      normal: this.debugNormal,
+      metal: this.debugMetal,
+      reset: this.setDebug
+    }
+  }
+
+  debugWireframe = () => {
+    this.setDebug(mesh => {
+      mesh.material.wireframe = true
+    })
+  }
+
+  debugNormal = () => {
+    this.setDebug(mesh => {
+      if (!mesh.material.normalMap) {
+        return
+      }
+
+      mesh.material.map = mesh.material.normalMap
+    })
+  }
+
+  debugMetal = () => {
+    this.setDebug(mesh => {
+      if (!mesh.material.metalnessMap) {
+        return
+      }
+
+      mesh.material.map = mesh.material.metalnessMap
+    })
+  }
+
+  resetDebug (mesh) {
+    mesh.debugMap = mesh.material.map
+    mesh.material.wireframe = false
+  }
+
+  setDebug = (callback = null) => {
+    this.scene.traverse(child => {
+      if (!child.isMesh) {
+        return
+      }
+
+      if (!this.debugPrepared) {
+        child.debugMap = child.material.map
+      }
+
+      this.resetDebug(child)
+      if (callback) {
+        callback(child)
+      }
+
+      child.material.needsUpdate = true
+    })
+
+    this.debugPrepared = true
   }
 
   setWrapperSize () {
