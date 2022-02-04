@@ -24,6 +24,7 @@
 
   &__section1,
   &__section2,
+  &__section2_1,
   &__section3,
   &__section4 {
     position: fixed;
@@ -36,18 +37,23 @@
   }
 
   &__section2 {
-    left: 5rem;
-    top: 45vh;
+    right: 39vw;
+    top: 15vh;
+  }
+
+  &__section2_1 {
+    right: 15rem;
+    top: 35vh;
   }
 
   &__section3 {
-    bottom: 35vh;
+    bottom: 25vh;
     right: 5rem;
   }
 
   &__section4 {
-    right: 5rem;
-    top: 65vh;
+    right: 15rem;
+    top: 75vh;
   }
 
   em {
