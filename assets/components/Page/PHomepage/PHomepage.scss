@@ -1,9 +1,11 @@
 @import "../../../scss/base";
 
 .p-homepage {
+  background-color: map-get($theme-colors, "dark");
   position: relative;
 
   &__canvas {
+    background-color: map-get($theme-colors, "light");
     height: 100%;
     position: relative;
     width: 100%;
@@ -22,38 +24,29 @@
     width: 100%;
   }
 
-  &__section1,
-  &__section2,
-  &__section2_1,
-  &__section3,
-  &__section4 {
-    position: fixed;
-    width: 512px;
-  }
-
   &__section1 {
-    bottom: 55vh;
-    left: 5rem;
+    bottom: 40vh;
+    left: 5vw;
   }
 
   &__section2 {
-    right: 39vw;
-    top: 15vh;
-  }
-
-  &__section2_1 {
-    right: 15rem;
-    top: 35vh;
+    bottom: 70vh;
+    right: 5vw;
   }
 
   &__section3 {
-    bottom: 25vh;
-    right: 5rem;
+    bottom: 62.5vh;
+    left: 5vw;
   }
 
   &__section4 {
-    right: 15rem;
-    top: 75vh;
+    bottom: 25vh;
+    right: 5vw;
+  }
+
+  &__section5 {
+    bottom: 5vh;
+    right: 5vw;
   }
 
   em {
@@ -62,8 +55,9 @@
   }
 
   section {
-    background-color: map-get($theme-colors, "dark");
     color: map-get($theme-colors, "light");
+    margin: auto;
+    max-width: 720px;
     padding: 4rem;
   }
 }

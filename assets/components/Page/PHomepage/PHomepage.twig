@@ -24,87 +24,66 @@
       {% include 'Atom/AScrollHint/AScrollHint.twig' only %}
     </div>
 
-    <div
-      data-appear="bottom"
-      data-appear-start="25"
-      data-appear-end="75"
-      class="p-homepage__section1"
-    >
-      <h2><em>STEP 1:</em><br>Remove The Dust Cover</h2>
-      <p>It's not 1960 and these things just don't do enough good to justify the ugliness.</p>
-    </div>
+    {% set animationSteps = [
+      {
+        title: 'Remove The Dust Cover',
+        paragraph: 'It\'s not 1960 and these things just don\'t do enough good to justify the ugliness.',
+        start: 25,
+      },
+      {
+        title: 'Clip The Clippy Things',
+        paragraph: 'They will fit right into the dust cover\'s joints.',
+        start: 100,
+      },
+      {
+        title: 'Get Your Wax Out',
+        paragraph: 'Don\'t forget to wipe.',
+        start: 175,
+      },
+      {
+        title: 'Place The Sleeve Into The Clips',
+        paragraph: 'This will fit sleeves with up to two 220g vinyls. If your sleeve is too thick, you might be able to open it like a book and reduce the size.',
+        start: 325,
+      },
+      {
+        title: 'Lean Back & Enjoy The Music',
+        paragraph: 'And take some time to appreciate that beautiful cover.',
+        start: 425,
+      },
+    ] %}
 
-    <div
-      data-appear="bottom"
-      data-appear-start="100"
-      data-appear-end="150"
-      class="p-homepage__section2"
-    >
-      <h2><em>STEP 2:</em><br>Clip the clippy things</h2>
-      <p>They will fit right into the dust cover's joints.</p>
-    </div>
-
-    <div
-      data-appear="bottom"
-      data-appear-start="175"
-      data-appear-end="225"
-      class="p-homepage__section2_1"
-    >
-      <h2><em>STEP 2.1:</em><br>Get your wax out</h2>
-      <p>Don't forgot to wipe.</p>
-    </div>
-
-    <div
-      data-appear="bottom"
-      data-appear-start="250"
-      data-appear-end="350"
-      class="p-homepage__section3"
-    >
-      <h2><em>STEP 3:</em><br>Place The Sleeve Into The Clips</h2>
-      <p>This will fit sleeves with up to two 220g vinyls. If your sleeve is too thick, you might be able to open it
-         like a book and reduce the size.</p>
-    </div>
-
-    <div
-      data-appear="bottom"
-      data-appear-start="400"
-      data-appear-end="475"
-      class="p-homepage__section4"
-    >
-      <h2><em>STEP 4:</em><br>Lean Back & Enjoy The Music</h2>
-      <p>And take some time to appreciate that beautiful cover.</p>
-    </div>
+    {% for index, step in animationSteps %}
+      {% include 'Molecule/MAnimationStep/MAnimationStep.twig' with step|merge({
+        index,
+        class: 'p-homepage__section' ~ (index + 1)
+      }) only %}
+    {% endfor %}
 
     <section>
-      <h2>First stamps</h2>
-      <p>The first stamps appeared in 1871. They were round in shape, imperforate, and printed in black, with a crude
-         lion's head, surrounded by Arabic script specifying one of three denominations. The lion, sher, represented the
-         head of state, Sher Ali Khan, as he had been named for the bravery of a lion.[1] Many catalogues and early
-         collectors incorrectly referred to these as "tiger" heads.[2] Cancellation was accomplished by cutting or
-         tearing off a piece of the stamp. Cancellation by postmark was not introduced until 1891.[1] Initially somewhat
-         large, subsequent issues kept the same basic design but were smaller each year, with the last appearing in
-         1878. Starting in 1876, the stamps were printed in different colors, each color corresponding to one of the
-         main post offices on the Peshawar-Kabul-Khulm route.[3] Each design in a sheet was individually engraved, so
-         the stamps vary considerably in appearance. Many of the Sher Ali issues are readily available, while some sell
-         for hundreds of US$.
+      <h2>Questionnaire</h2>
+      <p>Please help me figure out if this is a good idea or not. Fill out and send the form below.</p>
+      <p>
+        <em>
+          All data will be strictly anonymous. This site does not get or store any information about you, your browser,
+          or your behaviour during your visit.
+        </em>
       </p>
-      <h3>Independence</h3>
-      <p>The first issue after independence came out on 24 August 1920, a design featuring the royal star of King
-         Amanullah. The three denominations were also the first to use Latin script for the numerals as well as Arabic.
-         Beginning in 1924, each year at least one stamp was issued in February to commemorate independence, a pattern
-         that held steady, with few omissions, until the 1960s.
-      </p>
-      <h3>Civil war and after</h3>
-      <p>The disruption of governance in the late 80s and early 90s due to civil war and the rise of the Islamic Emirate
-         of Afghanistan, led to stopping of stamp issues from 1989 to 2001, although the postal service continued to
-         exist it functioned only haphazardly using existing stamp supplies. There are only a few postal items known
-         from the 1996 to 2001 period.[5][6] During this interim period, many unofficial stamps were printed and
-         distributed, which were disavowed by the Afghanistan postal service in 2000 under the Taliban, and subsequently
-         in 2003 by the Karzai government.[7] Stamp production resumed when the Taliban regime was overthrown and the
-         Afghan Postal Authority reconstituted.[8] The first issue of a postage stamp after the hiatus was the May 2002
-         stamp showing Ahmad Shah Massoud, a military general and national hero who defended Afghanistan against the
-         Soviet Union in the 1980s and later led a resistance movement against the Taliban.[9]
-      </p>
+      <form>
+        {% include 'Molecule/MQuestionnaireStep/MQuestionnaireStep.twig' with {
+          question: 'Do you use the dust cover on your turntable?',
+          id: 'dustCover'
+        } %}
+
+        {% include 'Molecule/MQuestionnaireStep/MQuestionnaireStep.twig' with {
+          question: 'Would you replace your dust cover with this product?',
+          id: 'replaceCover'
+        } %}
+
+        {% include 'Molecule/MQuestionnaireStep/MQuestionnaireStep.twig' with {
+          question: 'Do you have any other type of sleeve holder or "Now Playing" display?',
+          id: 'otherHolder'
+        } %}
+      </form>
     </section>
   </div>
 {% endblock page %}

@@ -4,6 +4,8 @@ import { MFComponent } from '@vucx/vanilla-component/src/MFComponent'
 import { AMainCanvas } from '../../Atom/AMainCanvas/AMainCanvas'
 import { AppearElement } from '../../../utilities/AppearElement'
 import '../../Atom/AScrollHint/AScrollHint'
+import '../../Molecule/MAnimationStep/MAnimationStep'
+import '../../Molecule/MQuestionnaireStep/MQuestionnaireStep'
 
 ready(function () {
   MFComponent.initComponentList(

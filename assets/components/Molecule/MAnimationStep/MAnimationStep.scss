@@ -1,0 +1,17 @@
+@import "assets/scss/base";
+
+.m-animationStep {
+  position: fixed;
+  width: 512px;
+
+  h2 {
+    font-size: 3rem;
+    line-height: 2.8rem;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+}

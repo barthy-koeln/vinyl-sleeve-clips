@@ -151,7 +151,7 @@
             "name" : "Camera",
             "rotation" : [
                 0.6314550638198853,
-                0.04299958050251007,
+                0.04299957677721977,
                 -0.03510666638612747,
                 0.7734229564666748
             ],
@@ -1222,9 +1222,9 @@
         {
             "bufferView" : 26,
             "componentType" : 5126,
-            "count" : 281,
+            "count" : 301,
             "max" : [
-                9.333333333333334
+                10
             ],
             "min" : [
                 0
@@ -1234,13 +1234,13 @@
         {
             "bufferView" : 27,
             "componentType" : 5126,
-            "count" : 281,
+            "count" : 301,
             "type" : "VEC3"
         },
         {
             "bufferView" : 28,
             "componentType" : 5126,
-            "count" : 281,
+            "count" : 301,
             "type" : "VEC4"
         }
     ],
@@ -1377,18 +1377,18 @@
         },
         {
             "buffer" : 0,
-            "byteLength" : 1124,
+            "byteLength" : 1204,
             "byteOffset" : 135420
         },
         {
             "buffer" : 0,
-            "byteLength" : 3372,
-            "byteOffset" : 136544
+            "byteLength" : 3612,
+            "byteOffset" : 136624
         },
         {
             "buffer" : 0,
-            "byteLength" : 4496,
-            "byteOffset" : 139916
+            "byteLength" : 4816,
+            "byteOffset" : 140236
         }
     ],
     "samplers" : [
@@ -1399,7 +1399,7 @@
     ],
     "buffers" : [
         {
-            "byteLength" : 144412,
+            "byteLength" : 145052,
             "uri" : "turntable.web.bin"
         }
     ]

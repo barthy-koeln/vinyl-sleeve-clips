@@ -3,19 +3,21 @@
 $black: #000;
 
 $theme-colors: (
-  "primary": #54c152,
-  "secondary": #464d77,
-  "light": #ccfbfe,
-  "dark": #1f2721,
+  "primary": #f56c73,
+  "secondary": #f6cf65,
+  "light": #f4e9e2,
+  "dark": #463f3a,
 );
 
 $background: map-get($theme-colors, "light");
 $foreground: map-get($theme-colors, "dark");
 
 // FONTS
-$headings-font-family: "Blackout Midnight", sans-serif;
+$headings-font-family: "Rubik", sans-serif;
+$headings-font-weight: bolder;
 $font-family-base: "Inter", sans-serif;
 $font-family-alt: "Inter", sans-serif;
+$font-family-sans-serif: $font-family-base;
 
 // ANIMATIONS
 $duration: .35s;

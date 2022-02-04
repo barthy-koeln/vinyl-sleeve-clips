@@ -1,0 +1,9 @@
+<div
+  data-appear="{{ appear|default('bottom') }}"
+  data-appear-start="{{ start }}"
+  data-appear-end="{{ end|default(start + 50) }}"
+  class="m-animationStep {{ buildClassList() }}"
+>
+  <h2><em>STEP {{ index + 1 }}:</em><br>{{ title }}</h2>
+  <p>{{ paragraph }}</p>
+</div>

@@ -1,0 +1,29 @@
+<fieldset
+  name="{{ id }}"
+  id="{{ id }}"
+  class="m-questionnaireStep"
+>
+  <label for="{{ id }}">{{ question }}</label>
+  <div>
+    <label for="{{ id }}__true">
+      <input
+        type="radio"
+        value="true"
+        id="{{ id }}__true"
+        name="{{ id }}"
+      >
+      <span>Yes</span>
+    </label>
+  </div>
+  <div>
+    <label for="{{ id }}__false">
+      <input
+        type="radio"
+        value="false"
+        id="{{ id }}__false"
+        name="{{ id }}"
+      >
+      <span>No</span>
+    </label>
+  </div>
+</fieldset>
