@@ -31,6 +31,9 @@ export class AMainCanvas extends ThreeJSCanvas {
 
     this.camera = gltf.cameras[0]
     this.camera.aspect = this.sizes.width / this.sizes.height
+    this.camera.zoom = 1 - (this.zoom - 1)
+
+    console.info({ zoom: this.zoom })
     this.camera.updateProjectionMatrix()
 
     this.vinyl = root.getObjectByName('Vinyl')

@@ -14,11 +14,12 @@ export class ThreeJSCanvas extends MFComponent {
     this.wrapper = this.container.querySelector(`.${baseclass}__wrapper`)
     this.canvas = this.container.querySelector(`.${baseclass}__canvas`)
 
-    this.setWrapperSize()
-
     this.camera = null
     this.scene = new Scene()
     this.debugPrepared = false
+    this.zoom = 1
+
+    this.setWrapperSize()
 
     this.setupRenderer()
     this.setupLights()
@@ -89,6 +90,11 @@ export class ThreeJSCanvas extends MFComponent {
   setWrapperSize () {
     this.wrapper.style.width = window.innerWidth + 'px'
     this.wrapper.style.height = window.innerHeight + 'px'
+
+    this.zoom = Math.max(
+      window.innerWidth / this.sizes.width,
+      window.innerHeight / this.sizes.height
+    )
   }
 
   setRendererSize () {
