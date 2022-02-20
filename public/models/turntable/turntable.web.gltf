@@ -409,6 +409,13 @@
                         "node" : 9,
                         "path" : "rotation"
                     }
+                },
+                {
+                    "sampler" : 2,
+                    "target" : {
+                        "node" : 9,
+                        "path" : "scale"
+                    }
                 }
             ],
             "name" : "move_camera",
@@ -422,6 +429,11 @@
                     "input" : 57,
                     "interpolation" : "LINEAR",
                     "output" : 59
+                },
+                {
+                    "input" : 60,
+                    "interpolation" : "LINEAR",
+                    "output" : 61
                 }
             ]
         }
@@ -1338,6 +1350,24 @@
             "componentType" : 5126,
             "count" : 391,
             "type" : "VEC4"
+        },
+        {
+            "bufferView" : 30,
+            "componentType" : 5126,
+            "count" : 2,
+            "max" : [
+                13
+            ],
+            "min" : [
+                0
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 31,
+            "componentType" : 5126,
+            "count" : 2,
+            "type" : "VEC3"
         }
     ],
     "bufferViews" : [
@@ -1490,6 +1520,16 @@
             "buffer" : 0,
             "byteLength" : 6256,
             "byteOffset" : 206512
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 8,
+            "byteOffset" : 212768
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 24,
+            "byteOffset" : 212776
         }
     ],
     "samplers" : [
@@ -1500,7 +1540,7 @@
     ],
     "buffers" : [
         {
-            "byteLength" : 212768,
+            "byteLength" : 212800,
             "uri" : "turntable.web.bin"
         }
     ]

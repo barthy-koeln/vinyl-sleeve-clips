@@ -2,42 +2,47 @@
 
 <!doctype html>
 <html lang="{{ app.request.locale }}">
-<head>
-  <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-  <title>{{ pageTitle|default('Welcome!') }} &middot; Twig/JS Template</title>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1"
+    />
 
-  <meta
-    name="description"
-    content="{{ pageDescription|default('A Twig and JS template.') }}"
-  >
+    <title>{{ pageTitle|default('Welcome!') }} &middot; Twig/JS Template</title>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
+    <meta
+      name="description"
+      content="{{ pageDescription|default('A Twig and JS template.') }}"
+    >
 
-  {% block head_assets %}
-    {{ encore_entry_link_tags('header', entrypointName = buildType, attributes = {defer: false}) }}
-    {{ encore_entry_script_tags('header', entrypointName = buildType, attributes = {defer: false}) }}
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    >
 
-    {% if entryName is defined %}
-      {{ encore_entry_link_tags(entryName, entrypointName = buildType) }}
-    {% endif %}
-  {% endblock %}
-</head>
+    {% block head_assets %}
+      {{ encore_entry_link_tags('header', entrypointName = buildType, attributes = {defer: false}) }}
+      {{ encore_entry_script_tags('header', entrypointName = buildType, attributes = {defer: false}) }}
 
-<body class="{{ body_class|default('') }}">
+      {% if entryName is defined %}
+        {{ encore_entry_link_tags(entryName, entrypointName = buildType) }}
+      {% endif %}
+    {% endblock %}
+  </head>
 
-{% block page %}{% endblock %}
+  <body class="{{ body_class|default('') }}">
 
-{% block body_assets %}
-  {{ encore_entry_link_tags('app', entrypointName = buildType) }}
-  {{ encore_entry_script_tags('app', entrypointName = buildType) }}
+    {% block page %}{% endblock %}
 
-  {% if entryName is defined %}
-    {{ encore_entry_script_tags(entryName, entrypointName = buildType) }}
-  {% endif %}
-{% endblock %}
-</body>
+    {% block body_assets %}
+      {{ encore_entry_link_tags('app', entrypointName = buildType) }}
+      {{ encore_entry_script_tags('app', entrypointName = buildType) }}
+
+      {% if entryName is defined %}
+        {{ encore_entry_script_tags(entryName, entrypointName = buildType) }}
+      {% endif %}
+    {% endblock %}
+  </body>
 </html>

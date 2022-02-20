@@ -88,12 +88,14 @@ export class ThreeJSCanvas extends MFComponent {
   }
 
   setWrapperSize () {
-    this.wrapper.style.width = window.innerWidth + 'px'
-    this.wrapper.style.height = window.innerHeight + 'px'
+    const width = document.documentElement.clientWidth
+    const height = document.documentElement.clientHeight
+    this.wrapper.style.width = `${width}px`
+    this.wrapper.style.height = `${height}px`
 
     this.zoom = Math.max(
-      window.innerWidth / this.sizes.width,
-      window.innerHeight / this.sizes.height
+      width / this.sizes.width,
+      height / this.sizes.height
     )
   }
 
