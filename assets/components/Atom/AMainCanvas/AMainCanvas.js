@@ -2,6 +2,7 @@ import './AMainCanvas.scss'
 import { ThreeJSCanvas } from '../../../utilities/ThreeJSCanvas'
 import { AnimationMixer, Clock, Mesh, PlaneGeometry, ShadowMaterial } from 'three/src/Three'
 import { getAngularSpeed } from '../../../utilities/getAngularSpeed'
+import { envMap } from '../../../utilities/envMap'
 
 export class AMainCanvas extends ThreeJSCanvas {
 
@@ -10,20 +11,37 @@ export class AMainCanvas extends ThreeJSCanvas {
 
     this.clock = new Clock()
     this.framesPerSecond = 30
+    this.totalFrames = 390
+    this.duration = this.totalFrames / this.framesPerSecond
     this.scrollSpeed = 0.05
-    this.totalFrames = 380
     this.currentFrame = 0
     this.angularSpeedVinyl = getAngularSpeed(33)
-    this.container.style.height = `${this.totalFrames / this.scrollSpeed}px`
+    this.height = this.totalFrames / this.scrollSpeed
+    this.container.style.height = `${this.height}px`
     this.modelLoader.load('/models/turntable/turntable.web.gltf', this.onGltfLoaded)
   }
 
   onGltfLoaded = (gltf) => {
     const root = gltf.scene
 
+    const anisotropy = this.renderer.capabilities.getMaxAnisotropy()
+
     root.traverse(child => {
       if (!child.isMesh) {
         return
+      }
+
+      if (child.material) {
+        child.material.envMap = envMap
+        child.material.envMapIntensity = 0.5
+
+        for (const map of ['map', 'normalMap', 'roughnessMap', 'metalnessMap']) {
+          const texture = child.material[map]
+
+          if (texture) {
+            texture.anisotropy = anisotropy
+          }
+        }
       }
 
       child.castShadow = true
@@ -33,11 +51,9 @@ export class AMainCanvas extends ThreeJSCanvas {
     this.camera.aspect = this.sizes.width / this.sizes.height
     this.camera.zoom = 1 - (this.zoom - 1)
 
-    console.info({ zoom: this.zoom })
     this.camera.updateProjectionMatrix()
 
     this.vinyl = root.getObjectByName('Vinyl')
-    this.clips = root.getObjectByName('Clips')
 
     const planeGeometry = new PlaneGeometry(200, 200, 32, 32)
     const planeMaterial = new ShadowMaterial()
@@ -52,12 +68,13 @@ export class AMainCanvas extends ThreeJSCanvas {
     this.render()
 
     this.clipsMixer = new AnimationMixer(root)
-    gltf.animations.forEach((clip) => {
-      clip.duration = this.totalFrames
-      this.clipsMixer.clipAction(clip).play()
-    })
 
-    this.lastScrollY = window.scrollY
+    for (const clip of gltf.animations) {
+      clip.duration = 1000
+      this.clipsMixer.clipAction(clip).play()
+    }
+
+    this.lastScrollY = 0
     this.tick()
   }
 
@@ -76,12 +93,12 @@ export class AMainCanvas extends ThreeJSCanvas {
   }
 
   updateScrollAnimation () {
-    this.currentFrame = window.scrollY * this.scrollSpeed
-    this.clipsMixer.setTime(this.currentFrame / this.framesPerSecond)
+    this.currentTime = Math.min(this.duration, window.scrollY / this.height / this.scrollSpeed)
+    this.clipsMixer.setTime(this.currentTime)
   }
 
   updateContinuousAnimation () {
-    if (this.currentFrame > 140) {
+    if (this.currentTime > 6.16) {
       if (!this.clock.running) {
         this.clock.start()
       }
